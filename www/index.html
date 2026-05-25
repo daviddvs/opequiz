@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+                   style-src 'self' 'unsafe-inline';
+                   script-src 'self' 'unsafe-inline' 'unsafe-eval';
+                   media-src *;
+                   img-src 'self' data: content:;" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Cuestionarios Test</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="app">
+
+        <header class="app-header">
+            <h1>Cuestionarios tipo test</h1>
+            <p>Elige un cuestionario y decide si quieres empezar una sesión nueva o continuar la anterior.</p>
+        </header>
+
+        <main>
+            <!-- Pantalla de inicio -->
+            <section id="home-screen" class="screen active">
+                <div class="card">
+                    <h2>Selecciona un test</h2>
+
+                    <button id="btn-test-500" class="main-button">
+                        Test de 500 preguntas
+                    </button>
+
+                    <button id="btn-test-200" class="main-button secondary">
+                        Test de 200 preguntas
+                    </button>
+
+                    <p class="small-text">
+                        Cada test guarda una sesión independiente. Puedes empezar una sesión nueva o continuar la anterior.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Pantalla para elegir sesión -->
+            <section id="session-screen" class="screen">
+                <div class="top-bar">
+                    <button id="btn-session-back" class="link-button">← Volver</button>
+                    <div id="session-quiz-title" class="quiz-title"></div>
+                </div>
+
+                <div class="card">
+                    <h2>Sesión del test</h2>
+                    <p id="session-info" class="session-info"></p>
+
+                    <button id="btn-new-session" class="main-button danger">
+                        Empezar sesión nueva
+                    </button>
+
+                    <button id="btn-continue-session" class="main-button secondary">
+                        Continuar sesión anterior
+                    </button>
+
+                    <p class="small-text">
+                        Nueva sesión: verás todas las preguntas mezcladas desde cero.<br />
+                        Continuar sesión: solo verás las preguntas que todavía no has respondido.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Pantalla del test -->
+            <section id="quiz-screen" class="screen">
+                <div class="top-bar">
+                    <button id="btn-exit" class="link-button">← Salir</button>
+                    <div id="quiz-title" class="quiz-title"></div>
+                </div>
+
+                <div class="progress-wrapper">
+                    <div class="progress-info">
+                        <span id="question-counter">Pregunta 1 / 1</span>
+                        <span id="score-counter">Respondidas: 0</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="card question-card">
+                    <h2 id="question-text">Pregunta</h2>
+
+                    <div id="answers-container" class="answers-container">
+                        <!-- Opciones generadas por JS -->
+                    </div>
+
+                    <div id="feedback" class="feedback"></div>
+                </div>
+
+                <div class="navigation">
+                    <button id="btn-prev" class="nav-button">Anterior</button>
+                    <button id="btn-next" class="nav-button">Siguiente</button>
+                </div>
+
+                <button id="btn-finish" class="finish-button">
+                    Finalizar test
+                </button>
+            </section>
+
+            <!-- Pantalla de resultado/corrección -->
+            <section id="result-screen" class="screen">
+                <div class="card">
+                    <h2 id="result-title">Resultado del test</h2>
+                    <p id="result-text" class="result-text"></p>
+
+                    <div id="result-details" class="result-details"></div>
+
+                    <button id="btn-continue-after-result" class="main-button secondary">
+                        Seguir con la misma sesión
+                    </button>
+
+                    <button id="btn-result-home" class="main-button">
+                        Volver al inicio
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pantalla de mensaje/error/carga -->
+            <section id="message-screen" class="screen">
+                <div class="card">
+                    <h2 id="message-title">Cargando...</h2>
+                    <p id="message-text"></p>
+                    <button id="btn-message-back" class="main-button">Volver</button>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
